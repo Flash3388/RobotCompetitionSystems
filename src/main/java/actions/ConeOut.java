@@ -1,6 +1,7 @@
 package actions;
 
 import com.flash3388.flashlib.scheduling.ActionControl;
+import com.flash3388.flashlib.scheduling.FinishReason;
 import com.flash3388.flashlib.scheduling.actions.ActionBase;
 import subSystem.Gripper;
 
@@ -19,7 +20,7 @@ public class ConeOut extends ActionBase {
     }
 
     @Override
-    public void end(){
+    public void end(FinishReason reason){
         gripper.stop();
     }
 }
