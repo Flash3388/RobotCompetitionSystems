@@ -6,15 +6,16 @@ import frc.robot.RobotMap;
 
 public class Gripper extends Subsystem {
     private WPI_TalonSRX talonSRX;
+    private static final double SPEED = 2;
     public Gripper(WPI_TalonSRX talon) {
         this.talonSRX = talon;
     }
 
     public void pickCone() {
-        talonSRX.set(2);
+        talonSRX.set(SPEED);
     }
     public void releaseCone(){
-        talonSRX.set(-2);
+        talonSRX.set(-SPEED);
     }
 
     public void move(double speed){
