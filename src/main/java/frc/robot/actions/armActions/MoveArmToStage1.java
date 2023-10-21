@@ -1,4 +1,4 @@
-package frc.robot.actions;
+package frc.robot.actions.armActions;
 
 import com.flash3388.flashlib.scheduling.ActionControl;
 import com.flash3388.flashlib.scheduling.FinishReason;

@@ -1,15 +1,15 @@
-package frc.robot.actions;
+package frc.robot.actions.elevatorActions;
 
 import com.flash3388.flashlib.scheduling.ActionControl;
 import com.flash3388.flashlib.scheduling.FinishReason;
 import com.flash3388.flashlib.scheduling.actions.ActionBase;
 import frc.robot.subSystems.ElevatorSystem;
 
-public class MoveToLowerCone extends ActionBase {
+public class MoveToMiddleCone extends ActionBase {
     private ElevatorSystem elevatorSystem;
 
 
-    public MoveToLowerCone(ElevatorSystem elevatorSystem){
+    public MoveToMiddleCone(ElevatorSystem elevatorSystem){
         this.elevatorSystem = elevatorSystem;
         requires(this.elevatorSystem);
     }
@@ -21,12 +21,12 @@ public class MoveToLowerCone extends ActionBase {
 
     @Override
     public void execute(ActionControl control) {
-        elevatorSystem.moveToLowerCone();
+        elevatorSystem.moveToMiddleCone();
     }
 
     @Override
     public boolean isFinished(){
-        return elevatorSystem.isAtLowerCone();
+        return elevatorSystem.isAtMiddleCone();
     }
 
     @Override

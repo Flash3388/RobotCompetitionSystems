@@ -1,15 +1,15 @@
-package frc.robot.actions;
+package frc.robot.actions.armActions;
 
 import com.flash3388.flashlib.scheduling.ActionControl;
 import com.flash3388.flashlib.scheduling.FinishReason;
 import com.flash3388.flashlib.scheduling.actions.ActionBase;
 import frc.robot.subSystems.ArmSystem;
 
-public class MoveArmToStage3 extends ActionBase {
+public class MoveArmToStage2 extends ActionBase {
     private ArmSystem armSystem;
 
 
-    public MoveArmToStage3(ArmSystem armSystem){
+    public MoveArmToStage2(ArmSystem armSystem){
         this.armSystem = armSystem;
         requires(this.armSystem);
     }
@@ -21,12 +21,12 @@ public class MoveArmToStage3 extends ActionBase {
 
     @Override
     public void execute(ActionControl control) {
-        armSystem.moveToStage3();
+        armSystem.moveToStage2();
     }
 
     @Override
     public boolean isFinished(){
-        return armSystem.isAtStage3();
+        return armSystem.isAtStage2();
     }
 
     @Override

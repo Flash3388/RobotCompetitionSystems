@@ -1,5 +1,6 @@
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
 import com.flash3388.flashlib.hid.XboxAxis;
@@ -18,7 +19,7 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
     private ArmSystem armSystem;
     public Robot(FrcRobotControl robotControl) {
         super(robotControl);
-        this.gripper = new Gripper();
+        this.gripper = new Gripper(new WPI_TalonSRX(RobotMap.GRIPPER));
         this.xbox = getHidInterface().newXboxController(RobotMap.XBOX);
         this.armSystem = new ArmSystem();
         this.elevatorSystem = new ElevatorSystem();

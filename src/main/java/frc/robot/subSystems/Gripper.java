@@ -6,12 +6,10 @@ import frc.robot.RobotMap;
 
 public class Gripper extends Subsystem {
     private WPI_TalonSRX talonSRX;
-    public Gripper() {
-        this.talonSRX= new WPI_TalonSRX(RobotMap.GRIPPER);
+    public Gripper(WPI_TalonSRX talon) {
+        this.talonSRX = talon;
     }
-    public void holdCone() {
-        talonSRX.set(0.2);
-    }
+
     public void pickCone() {
         talonSRX.set(2);
     }
