@@ -16,7 +16,7 @@ public class ConeIn extends ActionBase {
 
     @Override
     public void execute(ActionControl control){
-        gripper.move();
+        gripper.inside();
     }
 
     @Override

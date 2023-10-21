@@ -16,7 +16,7 @@ public class ConeOut extends ActionBase {
 
     @Override
     public void execute(ActionControl control){
-        gripper.move();
+        gripper.outside();
     }
 
     @Override
