@@ -9,23 +9,29 @@ import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
 import com.flash3388.flashlib.hid.XboxButton;
 import com.flash3388.flashlib.hid.XboxController;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
+import subSystem.Elevator;
 import subSystem.Gripper;
 import subSystem.Arm;
+import subSystem.Swerve;
 
 public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
     private Gripper gripper;
     private Arm arm;
     private XboxController xbox;
+    private Swerve swerve;
+    private Elevator elevator;
 
     public Robot(FrcRobotControl robotControl) {
         super(robotControl);
-        this.gripper = new Gripper(new WPI_TalonSRX(RobotMap.GRIPPER));
+        swerve = SystemFactory.createSwerveSystem();
+        gripper = SystemFactory.createGripperSystem();
         this.xbox = getHidInterface().newXboxController(RobotMap.XBOX);
 
         xbox.getButton(XboxButton.A).whileActive(new ConeIn(this.gripper));
         xbox.getButton(XboxButton.Y).whileActive(new ConeOut(this.gripper));
 
         arm = SystemFactory.createArmSystem();
+        elevator = SystemFactory.createElevatorSystem();
 
         xbox.getButton(XboxButton.X).whenActive(new Extension1(arm));
     }
