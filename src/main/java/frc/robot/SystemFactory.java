@@ -49,7 +49,8 @@ public class SystemFactory {
         steer = new CANSparkMax(RobotMap.SWERVE_STEER_RR, CANSparkMaxLowLevel.MotorType.kBrushless);
         swerveModules[3] = new SwerveModule(drive,steer);
 
-        CANCoder gyro = new CANCoder(RobotMap.PIGEON);
+        CANCoder gyroo = new CANCoder(RobotMap.PIGEON);
+        WPI_Pigeon2 gyro = new WPI_Pigeon2(RobotMap.PIGEON);
 
         return new Swerve(swerveModules, gyro);
     }

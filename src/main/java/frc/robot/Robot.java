@@ -3,7 +3,7 @@ package frc.robot;
 import actions.ConeIn;
 import actions.ConeOut;
 import actions.Extension1;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import actions.SwerveXbox;
 import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
 import com.flash3388.flashlib.hid.XboxButton;
@@ -34,6 +34,7 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
         elevator = SystemFactory.createElevatorSystem();
 
         xbox.getButton(XboxButton.X).whenActive(new Extension1(arm));
+        swerve.setDefaultAction(new SwerveXbox(swerve, xbox));
     }
 
     @Override
