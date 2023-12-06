@@ -35,21 +35,24 @@ public class SystemFactory {
 
         CANSparkMax drive = new CANSparkMax(RobotMap.SWERVE_DRIVE_FL, CANSparkMaxLowLevel.MotorType.kBrushless);
         CANSparkMax steer = new CANSparkMax(RobotMap.SWERVE_STEER_FL, CANSparkMaxLowLevel.MotorType.kBrushless);
-        swerveModules[0] = new SwerveModule(drive,steer);
+        CANCoder can = new CANCoder(RobotMap.CAN_CODER_FL);
+        swerveModules[0] = new SwerveModule(drive,steer,can);
 
         drive = new CANSparkMax(RobotMap.SWERVE_DRIVE_FR, CANSparkMaxLowLevel.MotorType.kBrushless);
         steer = new CANSparkMax(RobotMap.SWERVE_STEER_FR, CANSparkMaxLowLevel.MotorType.kBrushless);
-        swerveModules[1] = new SwerveModule(drive,steer);
+        can = new CANCoder(RobotMap.CAN_CODER_FR);
+        swerveModules[1] = new SwerveModule(drive,steer,can);
 
         drive = new CANSparkMax(RobotMap.SWERVE_DRIVE_RL, CANSparkMaxLowLevel.MotorType.kBrushless);
         steer = new CANSparkMax(RobotMap.SWERVE_STEER_RL, CANSparkMaxLowLevel.MotorType.kBrushless);
-        swerveModules[2] = new SwerveModule(drive,steer);
+        can = new CANCoder(RobotMap.CAN_CODER_RL);
+        swerveModules[2] = new SwerveModule(drive,steer,can);
 
         drive = new CANSparkMax(RobotMap.SWERVE_DRIVE_RR, CANSparkMaxLowLevel.MotorType.kBrushless);
         steer = new CANSparkMax(RobotMap.SWERVE_STEER_RR, CANSparkMaxLowLevel.MotorType.kBrushless);
-        swerveModules[3] = new SwerveModule(drive,steer);
+        can = new CANCoder(RobotMap.CAN_CODER_RR);
+        swerveModules[3] = new SwerveModule(drive,steer,can);
 
-        CANCoder gyroo = new CANCoder(RobotMap.PIGEON);
         WPI_Pigeon2 gyro = new WPI_Pigeon2(RobotMap.PIGEON);
 
         return new Swerve(swerveModules, gyro);

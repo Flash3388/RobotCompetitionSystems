@@ -22,4 +22,10 @@ public class RobotMap {
     public static final int SWERVE_STEER_FR = 42;
     public static final int SWERVE_STEER_RL = 62;
     public static final int SWERVE_STEER_RR = 32;
+
+    public static final int CAN_CODER_FL = 0;
+    public static final int CAN_CODER_FR = 0;
+    public static final int CAN_CODER_RL = 0;
+    public static final int CAN_CODER_RR = 0;
+
 }
