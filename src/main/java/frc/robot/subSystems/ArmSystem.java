@@ -68,6 +68,7 @@ public class ArmSystem extends Subsystem {
 
     public void move(double speed) {
         speed = ExtendedMath.constrain(speed, -SPEED_LIMIT, SPEED_LIMIT);
+       if(getPosition()>12) //*********!!!!
         this.motor.set(speed);
     }
 
@@ -100,5 +101,9 @@ public class ArmSystem extends Subsystem {
 
     public void stop(){
         this.motor.stopMotor();
+    }
+
+    public void printPosition(){
+        SmartDashboard.putNumber("Arm Position: " , getPosition());
     }
 }

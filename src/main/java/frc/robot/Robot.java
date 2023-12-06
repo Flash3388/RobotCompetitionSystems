@@ -32,7 +32,8 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
     @Override
     public void disabledPeriodic() {
-
+        String a = "kkkk";
+        a.toUpperCase();
     }
 
     @Override
@@ -42,7 +43,7 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
     @Override
     public void teleopPeriodic() {
-        gripper.move(xbox.getAxis(XboxAxis.LeftStickY).getAsDouble());
+     //   gripper.move(xbox.getAxis(XboxAxis.LeftStickY).getAsDouble());
         double armSpeed = xbox.getAxis(XboxAxis.LeftStickX).getAsDouble();
         armSpeed = Math.abs(armSpeed) > 0.2 ? armSpeed : 0;
         armSystem.move(armSpeed);
