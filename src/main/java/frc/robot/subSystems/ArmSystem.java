@@ -46,7 +46,8 @@ public class ArmSystem extends Subsystem {
         SmartDashboard.putNumber("KD_A", KD);
         SmartDashboard.putNumber("KF_A", KF);
         SmartDashboard.putNumber("SET_POINT_A", 0);
-        resetEncoder();
+
+        //resetEncoder();
     }
 
     public void resetPID(){
@@ -68,8 +69,11 @@ public class ArmSystem extends Subsystem {
 
     public void move(double speed) {
         speed = ExtendedMath.constrain(speed, -SPEED_LIMIT, SPEED_LIMIT);
-       if(getPosition()>12) //*********!!!!
-        this.motor.set(speed);
+
+      /*  if(getPosition() <= 0 && speed <= 0)
+            motor.stopMotor();
+        else */
+            this.motor.set(speed);
     }
 
     public void moveToStage1(){
@@ -105,5 +109,10 @@ public class ArmSystem extends Subsystem {
 
     public void printPosition(){
         SmartDashboard.putNumber("Arm Position: " , getPosition());
+    }
+
+    public void moveToPosition(double pos){
+        double speed = pid.applyAsDouble(getPosition(), pos);
+        move(speed);
     }
 }

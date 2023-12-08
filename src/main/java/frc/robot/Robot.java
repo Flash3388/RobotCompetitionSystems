@@ -6,6 +6,7 @@ import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
 import com.flash3388.flashlib.hid.XboxAxis;
 import com.flash3388.flashlib.hid.XboxController;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
+import frc.robot.actions.armActions.InitializeArm;
 import frc.robot.subSystems.ArmSystem;
 import frc.robot.subSystems.ElevatorSystem;
 import frc.robot.subSystems.Gripper;
@@ -38,7 +39,7 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
     @Override
     public void teleopInit() {
-
+    //    new InitializeArm(armSystem).start();
     }
 
     @Override
@@ -51,6 +52,8 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
         double elevatorSpeed = xbox.getAxis(XboxAxis.RightStickY).getAsDouble();
         elevatorSpeed = Math.abs(elevatorSpeed) > 0.2 ? elevatorSpeed : 0;
         elevatorSystem.move(elevatorSpeed);
+
+        armSystem.printPosition();
     }
 
     @Override
