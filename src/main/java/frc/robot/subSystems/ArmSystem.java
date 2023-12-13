@@ -47,7 +47,7 @@ public class ArmSystem extends Subsystem {
         SmartDashboard.putNumber("KF_A", KF);
         SmartDashboard.putNumber("SET_POINT_A", 0);
 
-        //resetEncoder();
+        resetEncoder();
     }
 
     public void resetPID(){
@@ -64,7 +64,7 @@ public class ArmSystem extends Subsystem {
     }
 
     public double getPosition(){
-        return this.encoder.getPosition();
+        return -this.encoder.getPosition() * 1/30 * 4.0;
     }
 
     public void move(double speed) {
