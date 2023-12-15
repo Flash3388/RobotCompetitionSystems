@@ -29,9 +29,9 @@ public class ElevatorSystem extends Subsystem {
 
     private double setPoint;
 
-    public ElevatorSystem(){
-        this.master = new WPI_TalonSRX(RobotMap.ELEVATOR_MASTER);
-        this.follower = new WPI_TalonSRX(RobotMap.ELEVATOR_FOLLOWER);
+    public ElevatorSystem(WPI_TalonSRX master, WPI_TalonSRX follower){
+        this.master = master;
+        this.follower = follower;
         this.follower.set(ControlMode.Follower, master.getDeviceID());
         this.pid = new PidController(RunningRobot.getControl().getClock(),
                 ()-> SmartDashboard.getNumber("KP", kp),

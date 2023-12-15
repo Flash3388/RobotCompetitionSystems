@@ -29,8 +29,8 @@ public class ArmSystem extends Subsystem {
     private static final double CLOSE = 0.0;
     private static final double ERROR = 0.05;
 
-    public ArmSystem(){
-        this.motor = new CANSparkMax(11, CANSparkMaxLowLevel.MotorType.kBrushless);
+    public ArmSystem(CANSparkMax motor){
+        this.motor = motor;
         this.encoder = motor.getEncoder();
 
         this.pid = new PidController(RunningRobot.getControl().getClock(),
@@ -70,7 +70,7 @@ public class ArmSystem extends Subsystem {
     public void move(double speed) {
         speed = ExtendedMath.constrain(speed, -SPEED_LIMIT, SPEED_LIMIT);
 
-      /*  if(getPosition() <= 0 && speed <= 0)
+        /*if(getPosition() <= 0 && speed <= 0)
             motor.stopMotor();
         else */
             this.motor.set(speed);

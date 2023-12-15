@@ -21,7 +21,7 @@ public class InitializeArm extends ActionBase {
 
     @Override
     public void execute(ActionControl actionControl) {
-        if(arm.getPosition() <= 12)
+        if(arm.getPosition() <= 7)
             arm.move(0.2);
 
         else actionControl.finish();
