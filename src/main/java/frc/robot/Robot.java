@@ -7,6 +7,7 @@ import com.flash3388.flashlib.hid.XboxAxis;
 import com.flash3388.flashlib.hid.XboxController;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.actions.armActions.ArmWithXbox;
 import frc.robot.actions.armActions.InitializeArm;
 import frc.robot.subSystems.ArmSystem;
 import frc.robot.subSystems.ElevatorSystem;
@@ -25,6 +26,8 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
         this.xbox = getHidInterface().newXboxController(RobotMap.XBOX);
         this.armSystem = SystemFactory.createArmSystem();
         this.elevatorSystem = SystemFactory.createElevatorSystem();
+
+        armSystem.setDefaultAction(new ArmWithXbox(armSystem, xbox));
     }
 
     @Override
@@ -39,22 +42,22 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
     @Override
     public void teleopInit() {
-    //    new InitializeArm(armSystem).start();
+        new InitializeArm(armSystem).start();
     }
 
     @Override
     public void teleopPeriodic() {
      //   gripper.move(xbox.getAxis(XboxAxis.LeftStickY).getAsDouble());
-        double armSpeed = xbox.getAxis(XboxAxis.LeftStickX).getAsDouble();
+       /* double armSpeed = xbox.getAxis(XboxAxis.LeftStickX).getAsDouble();
         armSpeed = Math.abs(armSpeed) > 0.2 ? armSpeed : 0;
-        armSystem.move(armSpeed);
+        armSystem.move(armSpeed);*/
 /*
         double elevatorSpeed = xbox.getAxis(XboxAxis.RightStickY).getAsDouble();
         elevatorSpeed = Math.abs(elevatorSpeed) > 0.2 ? elevatorSpeed : 0;
         elevatorSystem.move(elevatorSpeed);*/
 
         armSystem.printPosition();
-        SmartDashboard.putNumber("Vel Arm", armSpeed);
+     //   SmartDashboard.putNumber("Vel Arm", armSpeed);
     }
 
     @Override

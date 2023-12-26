@@ -67,12 +67,12 @@ public class ArmSystem extends Subsystem {
         return -this.encoder.getPosition() * 1/30 * 4.0;
     }
 
-    public void move(double speed) {
+    public void move(double speed) { //speed is opposite
         speed = ExtendedMath.constrain(speed, -SPEED_LIMIT, SPEED_LIMIT);
 
-        /*if(getPosition() <= 0 && speed <= 0)
+        if((getPosition() <= 0 && speed >= 0) || (getPosition() >= 50 && speed <= 0))
             motor.stopMotor();
-        else */
+        else
             this.motor.set(speed);
     }
 
